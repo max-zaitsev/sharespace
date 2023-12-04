@@ -6,6 +6,8 @@ import {RouterModule} from '@angular/router'
 import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/kit'
 import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core'
 import {ReactiveFormsModule} from '@angular/forms'
+import {StoreModule} from '@ngrx/store'
+import {reducers} from './store/reducers'
 
 const routes = [
   {
@@ -15,16 +17,17 @@ const routes = [
 ]
 
 @NgModule({
+  declarations: [RegisterComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
     TuiInputModule,
     TuiSvgModule,
     TuiInputPasswordModule,
     ReactiveFormsModule,
     TuiButtonModule,
     TuiLinkModule,
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('auth', reducers),
   ],
-  declarations: [RegisterComponent],
 })
 export class AuthModule {}
