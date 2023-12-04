@@ -1,1 +1,32 @@
-RegisterComponent
+<h3 class='tui-text_h3 tui-space_bottom-0'>Регистрация</h3>
+<p class='tui-text_body-m'>
+  <a tuiLink  [routerLink]="['/login']">Уже есть аккаунт?</a>
+</p>
+Backend errors
+<form [formGroup]='form' (ngSubmit)='onSubmit()' class='register-form'>
+  <tui-input formControlName='username'>
+    Имя пользователя
+    <input tuiTextfield type='text' />
+  </tui-input>
+  <tui-input
+    formControlName='email'
+    class='tui-space_top-3'>
+    Email
+    <input tuiTextfield type='email' />
+  </tui-input>
+
+  <tui-input-password
+    formControlName='password'
+    class='tui-space_top-3'
+  >
+    Пароль
+    <input
+      tuiTextfield
+    />
+  </tui-input-password>
+
+  <div class='tui-form__buttons tui-form__buttons_align_center tui-space_top-5'>
+    <button class='tui-form__button' tuiButton type='submit'>Зарегистрироваться</button>
+  </div>
+
+</form>
