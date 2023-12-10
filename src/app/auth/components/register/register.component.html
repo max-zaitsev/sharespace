@@ -26,7 +26,7 @@ Backend errors
   </tui-input-password>
 
   <div class='tui-form__buttons tui-form__buttons_align_center tui-space_top-5'>
-    <button class='tui-form__button' tuiButton type='submit'>Зарегистрироваться</button>
+    <button class='tui-form__button' tuiButton [disabled]="!!(isSubmitting$ | async)" type='submit'>Зарегистрироваться</button>
   </div>
 
 </form>
