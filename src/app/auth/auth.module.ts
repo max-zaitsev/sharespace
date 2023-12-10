@@ -8,6 +8,7 @@ import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core'
 import {ReactiveFormsModule} from '@angular/forms'
 import {StoreModule} from '@ngrx/store'
 import {reducers} from './store/reducers'
+import {AuthService} from './services/auth.service'
 
 const routes = [
   {
@@ -29,5 +30,6 @@ const routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', reducers),
   ],
+  providers: [AuthService],
 })
 export class AuthModule {}
