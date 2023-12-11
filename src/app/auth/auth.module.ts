@@ -18,6 +18,7 @@ import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './store/effects/register.effect'
 import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module'
 import {PersistenceService} from '../shared/services/persistence.service'
+import {LoginEffect} from './store/effects/login.effect'
 
 const routes = [
   {
@@ -38,7 +39,7 @@ const routes = [
     TuiLinkModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     BackendErrorMessagesModule,
     TuiLoaderModule,
   ],

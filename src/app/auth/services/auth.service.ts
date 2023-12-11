@@ -6,14 +6,22 @@ import {HttpClient} from '@angular/common/http'
 import {environment} from '../../../environments/environment'
 import {map} from 'rxjs/operators'
 import {IAuthResponse} from '../interfaces/IAuthResponse'
+import {ILoginRequest} from '../interfaces/ILoginRequest'
 
 @Injectable()
 export class AuthService {
+  getUser(response: IAuthResponse): ICurrentUser {
+    return response.user
+  }
+
   constructor(private http: HttpClient) {}
   register(data: IRegisterRequest): Observable<ICurrentUser> {
     const url = environment.apiUrl + '/users'
-    return this.http
-      .post<IAuthResponse>(url, data)
-      .pipe(map((response: IAuthResponse) => response.user))
+    return this.http.post<IAuthResponse>(url, data).pipe(map(this.getUser))
+  }
+
+  login(data: ILoginRequest): Observable<ICurrentUser> {
+    const url = environment.apiUrl + '/users/login'
+    return this.http.post<IAuthResponse>(url, data).pipe(map(this.getUser))
   }
 }

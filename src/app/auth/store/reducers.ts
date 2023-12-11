@@ -5,7 +5,11 @@ import {
   registerFailureAction,
   registerSuccessAction,
 } from './actions/register.action'
-import {act} from '@ngrx/effects'
+import {
+  loginAction,
+  loginFailureAction,
+  loginSuccessAction,
+} from './actions/login.action'
 
 const initialState: IAuthState = {
   isSubmitting: false,
@@ -35,6 +39,32 @@ const authReducer = createReducer(
   ),
   on(
     registerFailureAction,
+    (state, action): IAuthState => ({
+      ...state,
+      isSubmitting: false,
+      validationErrors: action.errors,
+    }),
+  ),
+
+  on(
+    loginAction,
+    (state): IAuthState => ({
+      ...state,
+      isSubmitting: true,
+      validationErrors: null,
+    }),
+  ),
+  on(
+    loginSuccessAction,
+    (state, action): IAuthState => ({
+      ...state,
+      isSubmitting: false,
+      currentUser: action.currentUser,
+      isLoggedIn: true,
+    }),
+  ),
+  on(
+    loginFailureAction,
     (state, action): IAuthState => ({
       ...state,
       isSubmitting: false,
