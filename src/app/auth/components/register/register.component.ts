@@ -4,6 +4,7 @@ import {select, Store} from '@ngrx/store'
 import {registerAction} from '../../store/actions/register.action'
 import {Observable, of} from 'rxjs'
 import {isSubmittingSelector} from '../../store/selectors'
+import {IRegisterRequest} from '../../interfaces/IRegisterRequest'
 
 @Component({
   selector: 'ss-register',
@@ -33,7 +34,10 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.form.value)
-    this.store.dispatch(registerAction(this.form.value))
+    const request: IRegisterRequest = {
+      user: this.form.value,
+    }
+    this.store.dispatch(registerAction({request}))
   }
 
   private initializeValues() {

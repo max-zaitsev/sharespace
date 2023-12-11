@@ -18,6 +18,8 @@ import {StoreModule} from '@ngrx/store'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
 import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {EffectsModule} from '@ngrx/effects'
+import {RegisterEffect} from './auth/store/effects/register.effect'
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},

@@ -11,7 +11,7 @@ import {IAuthResponse} from '../interfaces/IAuthResponse'
 export class AuthService {
   constructor(private http: HttpClient) {}
   register(data: IRegisterRequest): Observable<ICurrentUser> {
-    const url = environment.apiUrl + '/user'
+    const url = environment.apiUrl + '/users'
     return this.http
       .post<IAuthResponse>(url, data)
       .pipe(map((response: IAuthResponse) => response.user))
