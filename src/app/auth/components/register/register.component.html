@@ -2,7 +2,7 @@
 <p class='tui-text_body-m'>
   <a tuiLink  [routerLink]="['/login']">Уже есть аккаунт?</a>
 </p>
-Backend errors
+<ss-backend-error-messages *ngIf="backendErrors$ | async as backendErrors" [backendErrors] = "backendErrors"></ss-backend-error-messages>
 <form [formGroup]='form' (ngSubmit)='onSubmit()' class='register-form'>
   <tui-input formControlName='username'>
     Имя пользователя
@@ -26,7 +26,20 @@ Backend errors
   </tui-input-password>
 
   <div class='tui-form__buttons tui-form__buttons_align_center tui-space_top-5'>
-    <button class='tui-form__button' tuiButton [disabled]="!!(isSubmitting$ | async)" type='submit'>Зарегистрироваться</button>
+    <tui-loader
+      class="loader"
+      [inheritColor]="true"
+      [overlay]="true"
+      [showLoader]="!!(isSubmitting$ | async)"
+    >
+      <button
+        tuiButton
+        type="submit"
+        class='tui-form__button'
+      >
+        Зарегистрироваться
+      </button>
+    </tui-loader>
   </div>
 
 </form>

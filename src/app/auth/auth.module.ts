@@ -4,13 +4,20 @@ import {CommonModule} from '@angular/common'
 import {RegisterComponent} from 'src/app/auth/components/register/register.component'
 import {RouterModule} from '@angular/router'
 import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/kit'
-import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core'
+import {
+  TuiButtonModule,
+  TuiLinkModule,
+  TuiLoaderModule,
+  TuiSvgModule,
+} from '@taiga-ui/core'
 import {ReactiveFormsModule} from '@angular/forms'
 import {StoreModule} from '@ngrx/store'
 import {reducers} from './store/reducers'
 import {AuthService} from './services/auth.service'
 import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './store/effects/register.effect'
+import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module'
+import {PersistenceService} from '../shared/services/persistence.service'
 
 const routes = [
   {
@@ -32,7 +39,9 @@ const routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([RegisterEffect]),
+    BackendErrorMessagesModule,
+    TuiLoaderModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, PersistenceService],
 })
 export class AuthModule {}
