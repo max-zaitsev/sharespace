@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
-import {registerAction} from '../../store/actions/register.action'
 import {Observable, of} from 'rxjs'
 import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors'
-import {IRegisterRequest} from '../../interfaces/IRegisterRequest'
+import {ILoginRequest} from '../../interfaces/ILoginRequest'
 import {IBackendErrors} from '../../../shared/interfaces/IBackendErrors'
+import {loginAction} from '../../store/actions/login.action'
 
 @Component({
-  selector: 'ss-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.less'],
+  selector: 'ss-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less'],
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   form!: FormGroup
   isSubmitting$!: Observable<boolean>
   backendErrors$!: Observable<IBackendErrors | null>
@@ -32,16 +32,15 @@ export class RegisterComponent implements OnInit {
 
   initializeForm(): void {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.min(8)]],
     })
   }
   onSubmit() {
-    const request: IRegisterRequest = {
+    const request: ILoginRequest = {
       user: this.form.value,
     }
-    this.store.dispatch(registerAction({request}))
+    this.store.dispatch(loginAction({request}))
   }
 
   private initializeValues() {
