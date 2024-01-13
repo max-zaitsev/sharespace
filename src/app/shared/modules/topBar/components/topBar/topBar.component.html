@@ -1,0 +1,29 @@
+<nav class="nav">
+  <div class="container">
+    <a class="navbar-logo" [routerLink]="['/']">
+      <img class="logo" src="./assets/images/sharespace_logo.svg" alt="Логотип">
+    </a>
+    <ul>
+      <li class="nav-item">
+        <a
+          tuiLink icon="tuiIconHome"
+          iconAlign="left"
+          [routerLink]="['/']" class="nav-link">
+          Главная
+        </a>
+      </li>
+      <ng-container *ngIf="isLoggedIn$ | async">
+        <li class="nav-item">
+          <a
+            tuiLink
+            icon="tuiIconHome"
+            iconAlign="left"
+            [routerLink]="['/articles/new']"
+            class="nav-link">
+            Новая статья
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

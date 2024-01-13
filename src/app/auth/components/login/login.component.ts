@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {Observable, of} from 'rxjs'
@@ -14,6 +14,7 @@ import {loginAction} from '../../store/actions/login.action'
   selector: 'ss-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup

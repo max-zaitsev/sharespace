@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {registerAction} from '../../store/actions/register.action'
@@ -14,6 +14,7 @@ import {IBackendErrors} from '../../../shared/interfaces/IBackendErrors'
   selector: 'ss-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup

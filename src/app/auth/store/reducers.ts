@@ -14,7 +14,7 @@ import {
 const initialState: IAuthState = {
   isSubmitting: false,
   currentUser: null,
-  isLoggedIn: null,
+  isLoggedIn: false,
   validationErrors: null,
 }
 

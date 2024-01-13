@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
 import {IBackendErrors} from '../../../../interfaces/IBackendErrors'
 
 @Component({
   selector: 'ss-backend-error-messages',
   templateUrl: 'backendErrorMessages.component.html',
   styleUrls: ['backendErrorMessages.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BackendErrorMessagesComponent implements OnInit {
   @Input('backendErrors') backendErrorsProps!: IBackendErrors

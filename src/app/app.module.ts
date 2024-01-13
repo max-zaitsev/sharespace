@@ -20,6 +20,7 @@ import {environment} from '../environments/environment'
 import {HttpClient, HttpClientModule} from '@angular/common/http'
 import {EffectsModule} from '@ngrx/effects'
 import {RegisterEffect} from './auth/store/effects/register.effect'
+import {TopBarModule} from './shared/modules/topBar/topBar.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,7 @@ import {RegisterEffect} from './auth/store/effects/register.effect'
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    TopBarModule,
   ],
   providers: [
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},

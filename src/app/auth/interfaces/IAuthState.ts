@@ -4,6 +4,6 @@ import {IBackendErrors} from '../../shared/interfaces/IBackendErrors'
 export interface IAuthState {
   isSubmitting: boolean
   currentUser: ICurrentUser | null
-  isLoggedIn: boolean | null
+  isLoggedIn: boolean
   validationErrors: IBackendErrors | null
 }
